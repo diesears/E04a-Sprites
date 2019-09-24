@@ -18,23 +18,24 @@ class MyGame(arcade.Window):
         arcade.set_background_color(open_color.blue_4)
 
         self.animal_list = arcade.SpriteList()
-
-
+   
+   
     def setup(self):
-        animals = ['bear','buffalo','chick','chicken','cow','crocodile','dog','duck','elephant','frog','giraffe','goat','gorilla','hippo','horse','monkey','moose','narwhal','owl','panda','parrot','penguin','pig','rabbit','rhino','sloth','snake','walrus','whale','zebra']
-
-        animal = 'panda'
-        x = 400
-        y = 300
-        self.animal_sprite = arcade.Sprite("assets/{animal}.png".format(animal=animal), 0.5)
-        self.animal_sprite.center_x = x
-        self.animal_sprite.center_y = y
-        self.animal_list.append(self.animal_sprite)
-        
-
+        for i in range(20):
+            animals = ['bear','buffalo','chick','chicken','cow','crocodile','dog','duck','elephant','frog','giraffe','goat','gorilla','hippo','horse','monkey','moose','narwhal','owl','panda','parrot','penguin','pig','rabbit','rhino','sloth','snake','walrus','whale','zebra']
+            animal = random.choice(animals)
+            x = random.randint(0,800)
+            y = random.randint(0,600)
+            self.animal_sprite = arcade.Sprite("assets/{animal}.png".format(animal=animal),0.5)
+            self.animal_sprite.center_x = x
+            self.animal_sprite.center_y = y
+            self.animal_list.append(self.animal_sprite)
+            
+    
     def on_draw(self):
         arcade.start_render()
         self.animal_list.draw()
+
 
 
     def update(self, delta_time):
